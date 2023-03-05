@@ -1,0 +1,45 @@
+{
+  "name": "server-baru",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon ./bin/www",
+	"start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@casl/ability": "^6.0.0",
+    "aws-sdk": "^2.1312.0",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
+    "faker": "^5.5.3",
+    "glob": "^8.0.3",
+    "http-errors": "~1.6.3",
+    "joi": "^17.6.2",
+    "jsonwebtoken": "^9.0.0",
+    "log4js": "^6.6.1",
+    "module-alias": "^2.2.2",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^3.0.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.3",
+    "sharp": "^0.31.3"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@controllers": "./controllers",
+    "@models": "./models",
+    "@routes": "./routes",
+    "@middlewares": "./middlewares",
+    "@utils": "./utils",
+    "@validations": "./validations",
+    "@images": "./public/images",
+    "@config": "./config"
+  }
+}
