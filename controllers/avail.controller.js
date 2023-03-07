@@ -17,8 +17,7 @@ async function findAll(req, res, next) {
             {
                 model: kamar,
                 as: "kamar",
-                attributes: ["nomor",
-                    [Sequelize.fn("COUNT", Sequelize.col("kamar.id")), "kamar_count"]
+                attributes: ["nomor"
                 ],
                 required: false,
                 where:{},
