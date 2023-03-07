@@ -1,6 +1,6 @@
 const { kamar, detail, pemesanan, tipe } = require('@models')
 const { NotFound, Forbidden } = require('http-errors')
-const { Op } = require('sequelize')
+const { Op, Sequelize } = require('sequelize')
 
 async function findAll(req, res, next) {
     if (req.user.abilities.cannot('read', (kamar, detail, pemesanan, tipe))) {
