@@ -69,7 +69,7 @@ async function findAll(req, res, next) {
       }
     }
 
-    const result = await tipe.findAll(options);
+    const result = await tipe.findAndCountAll(options);
 
     res.json(result)
 }
