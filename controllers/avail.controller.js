@@ -17,7 +17,9 @@ async function findAll(req, res, next) {
             {
                 model: kamar,
                 as: "kamar",
-                attributes: ["nomor"],
+                attributes: ["nomor",
+                    [Sequelize.fn("COUNT", Sequelize.col("kamar.id")), "kamar_count"]
+                ],
                 required: false,
                 where:{},
                 include: [
@@ -69,7 +71,7 @@ async function findAll(req, res, next) {
       }
     }
 
-    const result = await tipe.findAndCountAll(options);
+    const result = await tipe.findAll(options);
 
     res.json(result)
 }
