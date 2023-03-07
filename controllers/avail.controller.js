@@ -12,7 +12,7 @@ async function findAll(req, res, next) {
         // order: [
         //     ['nomor', 'ASC']
         // ],
-        attributes: ['id','nama_tipe'],
+        attributes: ['id','nama_tipe','harga'],
         include: [
             {
                 model: kamar,
