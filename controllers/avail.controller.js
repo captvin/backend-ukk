@@ -12,7 +12,9 @@ async function findAll(req, res, next) {
         // order: [
         //     ['nomor', 'ASC']
         // ],
-        attributes: ['id','nama_tipe','harga'],
+        attributes: ['id','nama_tipe','harga',
+        [Sequelize.fn('COUNT', Sequelize.col('kamar.id')), 'count']
+        ],
         include: [
             {
                 model: kamar,
@@ -38,7 +40,9 @@ async function findAll(req, res, next) {
         ],
 
         
-        where: {}
+        where: {},
+        group: ['tipe.id']
+
     }
 
     const { id_tipe, tgl_in, tgl_out } = req.query

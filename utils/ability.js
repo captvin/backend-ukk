@@ -16,9 +16,10 @@ const abilities = (id, role) => {
             break;
 
         case 'resepsionis':
-            can('read', [detail, pemesanan, user, kamar, tipe])
+            can('read', [detail, pemesanan, kamar, tipe])
             can('update', [pemesanan, detail])
             can('update', user, { id })
+            can('read', user,{id})
             break;
         
         default:

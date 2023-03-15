@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
             const result = await user.findOne({where: {username}})
             if(!result){
                 return res.json({message:"User not found",
-                                             code:"401" 
+                                             code: 401 
                                             });
             }
             
@@ -49,7 +49,7 @@ const bcrypt = require('bcrypt');
             else{
                 // return (res, 0, "Wrong password!").status(403)
                 return res.json({   message:"Wrong password",
-                                                code: "402"
+                                                code: 402
                                             })
             }
         // } catch (err) {
