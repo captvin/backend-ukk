@@ -125,11 +125,12 @@ async function update(req, res, next) {
     body.tgl_in = data.tgl_in
     body.qty = data.qty
     body.id_tipe = data.id_tipe
+    body.id_user = req.user.id
+
     const result = await pemesanan.update(body, { where: { id } })
-    console.log(result)
-    // result[0]
-    //     ?res.json({message : "Successfully booking hotel"})
-    //     :next(NotFound())
+    result[0]
+        ?res.json({message : "Successfully update booking"})
+        :next(NotFound())
 }
 
 async function remove(req, res, next) {
