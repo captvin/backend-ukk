@@ -3,12 +3,12 @@ const { NotFound, Forbidden } = require('http-errors')
 const { Op } = require('sequelize')
 const path = require('path')
 const AWS = require("aws-sdk")
-const { AWS_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION } = process.env
+const { BUCKET_NAME, ACCESS_KEY_ID, SECRET_ACCESS_KEY, REGION } = process.env
 
 AWS.config.update({
-    region: AWS_REGION,
-    accessKeyId: AWS_ACCESS_KEY_ID,
-    secretAccessKey: AWS_SECRET_ACCESS_KEY
+    region: REGION,
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY
 });
 const s3 = new AWS.S3()
 
@@ -88,7 +88,7 @@ async function create(req, res, next) {
             body.image = gambar
             const buf = req.file.buffer
             const params = {
-                Bucket: AWS_BUCKET_NAME,
+                Bucket: BUCKET_NAME,
                 Key: `tipe/${gambar}`,
                 Body: buf
             }
@@ -136,7 +136,7 @@ async function update(req, res, next) {
             if (img = "no_image.jpg") {
                 const buf = req.file.buffer
                 const params = {
-                    Bucket: AWS_BUCKET_NAME,
+                    Bucket: BUCKET_NAME,
                     Key: `tipe/${gambar}`,
                     Body: buf
                 }
@@ -150,7 +150,7 @@ async function update(req, res, next) {
             else {
                 //delete image in S3
                 const del = {
-                    Bucket: AWS_BUCKET_NAME,
+                    Bucket: BUCKET_NAME,
                     Key: `tipe/${data.image}`
                 }
                 s3.deleteObject(del).promise()
@@ -158,7 +158,7 @@ async function update(req, res, next) {
                 //upload again image in s3
                 const buf = req.file.buffer
                 const patch = {
-                    Bucket: AWS_BUCKET_NAME,
+                    Bucket: BUCKET_NAME,
                     Key: `tipe/${gambar}`,
                     Body: buf
                 }
@@ -190,7 +190,7 @@ async function remove(req, res, next) {
     }
     else {
         const del = {
-            Bucket: AWS_BUCKET_NAME,
+            Bucket: BUCKET_NAME,
             Key: `tipe/${data.image}`
         }
         await s3.deleteObject(del).promise()
